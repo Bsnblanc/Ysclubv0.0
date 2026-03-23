@@ -1,0 +1,102 @@
+/*
+  此文件为移动端适配补丁，通过覆盖原有样式来保证页面在 iOS 与安卓设备上的显示效果。
+
+  使用方式：在原有 styles.css 之后引入本文件，例如：
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles_mobile.css">
+
+  主要改动：
+  1. 隐藏横向滚动条，防止页面横向溢出。
+  2. 图片、视频默认不超过容器宽度，保证纵横比。
+  3. 修正宽度为 100vw 以及负 margin 导致的横向偏移问题，确保在小屏幕上占据整行且居中。
+  4. 针对导航、Intro 区域、图片滚动条等元素调整内边距和间距，使其在移动端更加紧凑。
+*/
+
+/* 避免横向滚动 */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* 所有图片和视频限制宽度 */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 小屏幕布局优化 */
+@media (max-width: 768px) {
+    /* 去除全屏组件的负 margin 和宽度限制 */
+    .intro-gap,
+    #home,
+    .image-scroll-container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    /* 调整 Intro 区域视频高度，使标题不会被遮挡 */
+    .intro-gap {
+        min-height: 70vh;
+        padding-top: 20vh;
+        padding-bottom: 10vh;
+    }
+    /* 缩小滚动图片容器的高度和圆角，图片间距更紧凑 */
+    .image-scroll-container {
+        height: clamp(180px, 25vh, 280px);
+        border-radius: 12px;
+    }
+    .scroll-image-item {
+        width: clamp(180px, 32vw, 240px);
+        margin-right: 16px;
+    }
+    /* 调整文字区域的内边距 */
+    .home-content {
+        margin: 0;
+        padding: 0 12px;
+    }
+    .home-intro {
+        font-size: 0.95rem;
+    }
+    /* 导航菜单在移动端固定位置显示并使用较大的可点击区域 */
+    .masthead {
+        padding: 12px 20px;
+        backdrop-filter: blur(8px);
+        background: rgba(246, 244, 239, 0.92);
+    }
+    .nav__dropdown {
+        inset: 64px 12px auto 12px;
+        padding: 14px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        box-shadow: 0 20px 60px rgba(17, 17, 17, 0.12);
+        text-align: left;
+    }
+    /* 移动端隐藏滚动文字条，避免占用屏幕空间 */
+    .text-marquee {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 进一步缩减内边距以适应超小屏幕 */
+    .masthead {
+        padding: 10px 16px;
+    }
+    .image-scroll-container {
+        height: clamp(160px, 22vh, 220px);
+        border-radius: 8px;
+    }
+    .scroll-image-item {
+        width: clamp(160px, 40vw, 220px);
+        margin-right: 12px;
+    }
+    .home-content {
+        padding: 0 10px;
+    }
+    .intro-gap {
+        padding-top: 25vh;
+        padding-bottom: 8vh;
+    }
+}

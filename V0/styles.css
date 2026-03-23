@@ -1,0 +1,2185 @@
+﻿:root {
+    --color-background: #f6f4ef;
+    --color-foreground: #111111;
+    --color-muted: #6f6f6f;
+    --color-border: #d4d1c8;
+    --color-accent: #0f4c81;
+    --color-highlight: #ff6644;
+    --max-width: 1200px;
+    
+    /* 滚动文字配置变量 */
+    --marquee-speed: 60s;              /* 滚动速度：数值越小越快 */
+    --marquee-height: 100px;           /* 滚动条总高度（容纳两条轨道） */
+    --marquee-track-height: 50px;      /* 单条轨道高度 */
+    --marquee-font-size: 1.3rem;         /* 文字大小 */
+    --marquee-spacing: clamp(32px, 4vw, 48px); /* 文字间距 */
+    --marquee-color: rgba(199, 59, 59, 0.7);    /* 文字颜色 */
+    --marquee-bg: rgba(246, 244, 239, 0);   /* 背景颜色 */
+}
+
+.contact {
+    position: relative;
+    padding: clamp(100px, 18vh, 160px) clamp(24px, 8vw, 120px);
+    min-height: 100vh;
+    overflow: visible;
+    display: grid;
+    gap: clamp(40px, 6vw, 80px);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: var(--max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+    color: var(--color-foreground);
+    z-index: 0;
+}
+
+.contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: #ffffff;
+    z-index: -1;
+}
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    line-height: 1.6;
+}
+
+body.page-transition {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+body.page-transition.is-ready {
+    opacity: 1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main {
+    padding-top: 130px;  /* 只需要导航条的高度，滚动条默认隐藏 */
+    display: block;
+}
+
+
+.nav__toggle {
+    display: none;                              /* 桌面端默认隐藏 */
+    background: transparent;
+    border: 1px solid var(--color-border);
+    padding: 8px 18px;
+    border-radius: 999px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+
+
+/* 移动端折叠样式 */
+
+.nav__list {
+    display: inline-flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 24px;
+}
+
+
+
+
+.nav__link {
+        position: relative;
+        padding-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.75rem;
+}
+    
+
+
+.intro-gap {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+    margin: -130px 0 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    min-height: 100vh;
+    padding: clamp(80px, 19vh, 240px) clamp(24px, 6vw, 50px) clamp(100px, 60vh, 200px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.intro-gap__video {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: #000;
+}
+
+.intro-gap__video-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: contrast(1.05);
+    transform: scale(1.2) translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.intro-gap__title {
+    margin: 0px;
+    font-size: clamp(3rem, 15vw, 10rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 700;
+    /* 文字独立的飘动动画 */
+    animation: text-float 8s ease-in-out infinite;
+    transform-origin: center center;
+    /* 两行显示的样式 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+    /* 文字位置微调 */
+    margin-left: clamp(40px, 50vw, 180px);  /* 距离左边距 */
+    margin-top: clamp(0px, 10vh, 20px);    /* 距离顶部距 */
+    color: #ffffff;
+    text-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+}
+
+.title-line {
+    display: block;
+}
+.masthead {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px clamp(20px, 5vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 50;
+    background: rgba(246, 244, 239, 0);
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.brand__title {
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+}
+
+.brand__subtitle {
+    font-size: 0.65rem;
+    color: var(--color-muted);
+    letter-spacing: 0.18em;
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+}
+
+
+.nav__item--menu {
+    position: relative;
+}
+
+.nav__dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 100%;
+    margin: 0;
+    padding: 14px 16px;
+    list-style: none;
+    text-align: right;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+
+.nav__item--menu.is-open .nav__dropdown,
+.nav__item--menu:hover     .nav__dropdown {
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+/* 逐项延迟，形成上到下依次出现的效果 */
+.nav__dropdown li {
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav__item--menu.is-open .nav__dropdown li,
+.nav__item--menu:hover .nav__dropdown li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav__dropdown li + li {
+    margin-top: 16px;
+}
+
+.nav__dropdown .nav__link {
+    display: block;        /* 链接撑满整行，保持原有下划线动画 */
+    padding: 6px 0px;
+}
+
+.nav__dropdown .nav__link:hover {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 下划线效果已移除 */
+
+/* 菜单下拉时的背景模糊效果 */
+.menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(246, 244, 239, 0.3);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 30; /* 在导航之下，其他内容之上 */
+    pointer-events: none;
+}
+
+/* 菜单展开时显示背景模糊 - 通过JavaScript控制 */
+.menu-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 菜单展开时显示滚动条 */
+.text-marquee.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 字母滚动效果 - 仿照 flatstudio.jp */
+.text-marquee {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: var(--marquee-height);
+    overflow: hidden;
+    background: var(--marquee-bg);
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    /* 默认隐藏滚动条 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    height: var(--marquee-track-height);
+    align-items: center;
+    animation: marquee-scroll var(--marquee-speed) linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.marquee-track--reverse {
+    animation-name: marquee-scroll-reverse;
+}
+
+.marquee-track span {
+    display: inline-block;
+    padding: 0 var(--marquee-spacing);
+    font-size: var(--marquee-font-size);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--marquee-color);
+    flex-shrink: 0;
+    position: relative;
+}
+
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes marquee-scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Home页面样式 - 高级淡入淡出轮播 */
+#home {
+    align-items: flex-start;                 /* 左对齐内容 */
+    padding-top: 400px;          /* 增加顶部间距：从200px增加到300px */
+    padding-bottom: 100px;       /* 减小底部间距，缩小与下面内容的距离 */
+    flex-direction: column;
+    display: flex;
+    gap: 150px;                  /* 增加图片和文字之间的间距：从60px增加到150px */
+    min-height: 100vh;           /* 确保Home页面至少占满一个屏幕高度 */
+    position: relative;
+    z-index: 0;
+    max-width: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#home.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* 水平滚动图片容器 */
+.image-scroll-container {
+    width: clamp(520px, 70vw, 920px);
+    height: clamp(180px, 34vh, 360px);
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;                   /* 圆角大小 */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.2);
+    margin-top: 0px;                    /* 与上方文字的间距 */
+    margin-bottom: 250px;                  /* 底部间距 */
+    margin-left: clamp(40px, 12vw, 160px);
+    margin-right: auto;
+    order: 0;                              /* 默认顺序（文字是-1，所以文字在上方） */
+    
+    /* 
+    ═══════════════════════════════════════════════════
+    🎯 图片条显示范围调整完整指南
+    ═══════════════════════════════════════════════════
+    
+    【1】图片条整体宽度（水平范围）
+    ────────────────────────────────
+    width: 150%;           当前：超出屏幕，营造无限感
+    
+    调整选项：
+    - width: 100%;         与屏幕同宽
+    - width: 120%;         稍微超出（推荐）
+    - width: 150%;         较大超出（当前）
+    - width: 80%;          小于屏幕宽度，居中显示
+    - width: 1200px;       固定像素宽度
+    
+    
+    【2】图片条高度（垂直范围）
+    ────────────────────────────────
+    height: clamp(180px, 38vh, 420px);
+            ↑      ↑      ↑
+          最小值  理想值  最大值
+    
+    调整选项：
+    - height: 300px;                    固定高度300px
+    - height: clamp(200px, 40vh, 500px); 更高的图片条
+    - height: clamp(150px, 30vh, 350px); 更矮的图片条
+    - height: 50vh;                      屏幕高度的50%
+    
+    clamp说明：
+    - 第1个值：最小高度（手机等小屏幕）
+    - 第2个值：理想高度（vh = 屏幕高度的百分比）
+    - 第3个值：最大高度（大屏幕限制）
+    
+    
+    【3】圆角大小
+    ────────────────────────────────
+    border-radius: 16px;    当前：中等圆角
+    
+    调整选项：
+    - border-radius: 0px;   直角
+    - border-radius: 8px;   小圆角
+    - border-radius: 24px;  大圆角
+    - border-radius: 50px;  超大圆角
+    */
+    
+    /* 
+    🎯 将滚动图片条移到页面下部的调整方法：
+    
+    当前设置：margin-top: 800px; （图片条在页面下部）
+    
+    继续向下移动：
+    - margin-top: 900px;   → 更靠下
+    - margin-top: 1000px;  → 接近底部
+    - margin-top: 1200px;  → 最底部
+    
+    向上移动：
+    - margin-top: 600px;   → 中下部
+    - margin-top: 400px;   → 中部
+    - margin-top: 200px;   → 中上部
+    
+    💡 小技巧：
+    - 屏幕高度通常是700-1000px
+    - margin-top: 800px 适合将图片条放在页面下半部分
+    - 如果想放在最底部，设置为 1000px 以上
+    
+    调整与下方内容的间距：
+    - margin-bottom: 100px; → 增加底部间距
+    - margin-bottom: -50px; → 减小底部间距
+    */
+}
+
+/* 滚动轨道 */
+.image-scroll-track {
+    display: flex;
+    height: 100%;
+    animation: horizontal-scroll 20s linear infinite;  /* 滚动动画：25秒完成一次 */
+    will-change: transform;
+    backface-visibility: hidden;
+    
+    /* 
+    ═══════════════════════════════════════════════════
+    🎯 滚动速度调整
+    ═══════════════════════════════════════════════════
+    
+    【7】滚动速度
+    ────────────────────────────────
+    animation: horizontal-scroll 25s linear infinite;
+                              ↑
+                            滚动时间
+    
+    调整选项：
+    - 15s    非常快速滚动
+    - 20s    快速滚动
+    - 25s    中等速度（当前）
+    - 30s    慢速滚动
+    - 40s    很慢速滚动
+    - 60s    超慢速滚动
+    
+    💡 数值越小，滚动越快；数值越大，滚动越慢
+    
+    如果想暂停滚动：
+    animation-play-state: paused;
+    */
+}
+
+/* 图片项目 */
+.scroll-image-item {
+    flex-shrink: 0;
+    width: clamp(160px, 38vw, 420px);      /* 单个图片宽度 */
+    height: 100%;                          /* 高度继承图片条高度 */
+    margin-right: clamp(18px, 4vw, 36px);  /* 图片之间的间距 */
+    position: relative;
+    border-radius: 8px;                   /* 单个图片圆角 */
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 20px 50px rgba(104, 102, 102, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* 
+    ═══════════════════════════════════════════════════
+    🎯 单个图片显示范围调整
+    ═══════════════════════════════════════════════════
+    
+    【4】单个图片的宽度
+    ────────────────────────────────
+    width: clamp(160px, 38vw, 420px);
+           ↑      ↑      ↑
+         最小值  理想值  最大值
+    
+    调整选项：
+    - width: 300px;                     固定宽度300px
+    - width: clamp(200px, 40vw, 500px); 更宽的图片
+    - width: clamp(120px, 30vw, 350px); 更窄的图片
+    - width: 35vw;                      屏幕宽度的35%
+    
+    
+    【5】图片之间的间距
+    ────────────────────────────────
+    margin-right: clamp(18px, 4vw, 36px);
+    
+    调整选项：
+    - margin-right: 10px;                间距小，图片紧密
+    - margin-right: 30px;                间距中等
+    - margin-right: 50px;                间距大
+    - margin-right: clamp(10px, 2vw, 20px); 响应式小间距
+    - margin-right: clamp(30px, 6vw, 60px); 响应式大间距
+    
+    
+    【6】单个图片的圆角
+    ────────────────────────────────
+    border-radius: 12px;    当前：中等圆角
+    
+    调整选项：
+    - border-radius: 0px;   直角（方正）
+    - border-radius: 6px;   小圆角
+    - border-radius: 20px;  大圆角
+    - border-radius: 50%;   圆形（需要width=height）
+    */
+}
+
+.scroll-image-item:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+.scroll-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.scroll-image-item:hover img {
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* 图片说明文字 */
+.image-caption {
+    display: none;
+}
+
+/* 滚动动画 */
+@keyframes horizontal-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* 悬停暂停效果 */
+.image-scroll-container:hover .image-scroll-track {
+    animation-play-state: paused;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+    .programs {
+        padding: clamp(80px, 16vh, 120px) 24px;
+    }
+    
+    .programs__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 联系信息样式 */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin: 40px 0;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(17, 17, 17, 0.05);
+    border-radius: 16px;
+}
+
+.contact-item {
+    text-align: center;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    color: var(--color-foreground);
+}
+
+.contact-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px rgba(17, 17, 17, 0.12);
+    border-color: rgba(15, 76, 129, 0.25);
+}
+
+.contact-item h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    color: rgba(17, 17, 17, 0.7);
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: rgba(17, 17, 17, 0.65);
+    font-weight: 500;
+}
+
+.contact-item a {
+    color: rgba(15, 76, 129, 0.8);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: rgba(15, 76, 129, 1);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 24px 0;
+        padding: 16px;
+    }
+    
+    .contact-item {
+        padding: 16px;
+    }
+}
+
+/* APUL标志样式 */
+.apul-logo {
+    position: absolute;
+    top: clamp(80px, 14vh, 140px);
+    right: clamp(30px, 6vw, 60px);
+    width: clamp(120px, 20vw, 180px);
+    height: auto;
+    z-index: 10;
+    opacity: 0.95;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.2));
+}
+
+.apul-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+
+/* 内容区域样式 */
+.home-content {
+    max-width: 800px;
+    margin: 0;
+    padding: 0;
+    position: relative;          /* 设置为相对定位容器 */
+    min-height: 400px;           /* 确保有足够的高度 */
+    
+    /* 控制文字整体位置 */
+    order: -1;                   /* 显示在图片条上方（图片条order默认为0） */
+    margin-left: clamp(40px, 12vw, 160px);
+    margin-right: auto;
+    
+    /* 
+    🎯 调整文字整体位置的方法：
+    
+    上下位置（在图片条上方或下方）：
+    - order: -1    → 显示在图片条上方（当前）
+    - order: 1     → 显示在图片条下方
+    
+    左右位置（偏左或偏右）：
+    - margin-right: 100px  → 偏右100px（当前）
+    - margin-right: 200px  → 更偏右
+    - margin-right: 50px   → 稍微偏右
+    - margin-left: 0; margin-right: 0;  → 居中
+    - margin-left: 100px; margin-right: auto;  → 偏左
+    */
+}
+
+.home-num {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.home-text {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 50px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.home-intro {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.78);
+    text-align: justify;
+    margin: 0 0 50px;
+    max-width: 800px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.image-caption h4,
+.image-caption p {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav__item--menu:hover .nav__dropdown,
+    .nav__item--menu.is-open .nav__dropdown {
+        position: fixed;
+        inset: 72px 16px auto 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        box-shadow: 0 20px 60px rgba(17, 17, 17, 0.12);
+        padding: 16px;
+        text-align: left;
+    }
+
+    .nav__dropdown li + li {
+        margin-top: 14px;
+    }
+
+    .nav__dropdown li,
+    .nav__item--menu.is-open .nav__dropdown li,
+    .nav__item--menu:hover .nav__dropdown li {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .nav__dropdown .nav__link {
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+
+    .nav__item--menu.is-open .nav__dropdown li:hover .nav__link,
+    .nav__item--menu:hover .nav__dropdown li:hover .nav__link {
+        background: rgba(15, 76, 129, 0.08);
+        box-shadow: none;
+    }
+
+    .nav__dropdown li {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    main {
+        padding-top: 96px;
+    }
+
+    .masthead {
+        padding: 14px 24px;
+        backdrop-filter: blur(8px);
+        background: rgba(246, 244, 239, 0.92);
+    }
+
+    .nav__list {
+        gap: 12px;
+    }
+
+    .text-marquee {
+        display: none;
+    }
+
+    .intro-gap {
+        margin: -90px 0 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: clamp(100px, 28vh, 160px) 24px 80px;
+        min-height: 70vh;
+    }
+
+    .intro-gap__title {
+        margin-left: 0;
+        font-size: clamp(2.4rem, 18vw, 5.4rem);
+        align-items: flex-start;
+    }
+
+    #home {
+        gap: 32px;
+        padding: clamp(120px, 22vh, 160px) 24px 96px;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* APUL标志响应式调整 */
+    .apul-logo {
+        top: clamp(20px, 5vh, 40px);
+        right: clamp(20px, 4vw, 30px);
+    }
+    
+    .apul-badge {
+        width: clamp(60px, 10vw, 80px);
+        padding: 6px;
+    }
+    
+    .image-scroll-container {
+        width: 100%;
+        margin: 0 auto;
+        height: clamp(180px, 25vh, 250px);
+        border-radius: 12px;
+    }
+    
+    .scroll-image-item {
+        width: clamp(200px, 30vw, 250px);
+        margin-right: 16px;
+    }
+    
+    .image-scroll-track {
+        animation-duration: 20s;
+    }
+    
+    .image-caption {
+        padding: 8px 12px;
+    }
+    
+    .image-caption h4 {
+        font-size: 0.9rem;
+    }
+    
+    .image-caption p {
+        font-size: 0.75rem;
+    }
+
+    .home-content {
+        margin: 0;
+        padding: 0 4px;
+    }
+
+    .home-intro {
+        font-size: 1rem;
+    }
+
+    .manifesto,
+    .programs,
+    .contact {
+        padding: clamp(72px, 20vh, 120px) 24px;
+    }
+
+    .manifesto__stats-row {
+        gap: 18px;
+    }
+
+    .manifesto__body {
+        grid-template-columns: 1fr;
+    }
+
+    .programs__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .program-card {
+        padding: 24px;
+    }
+
+    .program-details {
+        gap: 10px;
+    }
+
+    .program-timetable {
+        justify-self: start;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .contact__panel,
+    .contact__meta {
+        order: initial;
+    }
+
+    .contact-info {
+        padding: 16px;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .masthead {
+        padding: 12px 20px;
+    }
+
+    .nav__item--menu.is-open .nav__dropdown,
+    .nav__item--menu:hover .nav__dropdown {
+        inset: 64px 12px auto 12px;
+        padding: 14px;
+    }
+
+    .image-scroll-container {
+        height: clamp(160px, 20vh, 200px);
+        border-radius: 8px;
+    }
+    
+    .scroll-image-item {
+        width: clamp(180px, 35vw, 220px);
+        margin-right: 12px;
+    }
+    
+    .image-scroll-track {
+        animation-duration: 18s;
+    }
+    
+    .home-content {
+        padding: 0 16px;
+    }
+
+    .intro-gap__title {
+        font-size: clamp(2.2rem, 16vw, 4.6rem);
+    }
+
+    .home-intro {
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        padding: clamp(100px, 26vh, 150px) 20px clamp(80px, 18vh, 140px);
+    }
+
+    .hero__cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .program-card {
+        padding: 20px;
+    }
+
+    .programs__notice {
+        font-size: 0.85rem;
+    }
+
+    .contact-info {
+        padding: 12px;
+    }
+
+    .contact-item {
+        padding: 14px;
+    }
+
+    .contact-qr__image {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* 减少动画效果（无障碍） */
+@media (prefers-reduced-motion: reduce) {
+    .image-scroll-track {
+        animation: none;
+    }
+    
+    .scroll-image-item {
+        transition: none;
+    }
+    
+    .scroll-image-item:hover {
+        transform: none;
+    }
+}
+/* 文字独立的飘动动画 */
+@keyframes text-float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    33% {
+        transform: translateY(-6px) translateX(4px);
+    }
+    66% {
+        transform: translateY(3px) translateX(-4px);
+    }
+}
+
+/* 
+═══════════════════════════════════════════════════
+🎬 Home页面文字动画
+═══════════════════════════════════════════════════
+*/
+
+/* 淡入向上滑动动画 */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 其他可选动画效果（取消注释即可使用）：
+
+淡入向右滑动：
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+淡入向左滑动：
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+缩放淡入：
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+旋转淡入：
+@keyframes fadeInRotate {
+    0% {
+        opacity: 0;
+        transform: rotate(-10deg) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) translateY(0);
+    }
+}
+*/
+
+/* 移除悬停效果，保持连续滚动 */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: clamp(140px, 24vh, 200px) clamp(24px, 7vw, 120px) clamp(120px, 18vh, 180px);
+    display: grid;
+    gap: 60px;
+    margin-top: 0;
+    scroll-margin-top: -330px;
+}
+
+#about {
+    scroll-margin-top: 10px;
+}
+
+
+/* 视频两侧渐隐效果 */
+.hero__video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--color-background) 0%, rgba(246, 244, 239, 0) 2%, rgba(246, 244, 239, 0) 98%, var(--color-background) 100%);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: none;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero__content {
+    max-width: 620px;
+    display: grid;
+    gap: 26px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__eyebrow {
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.05;
+}
+
+.hero__lead {
+    font-size: 1.05rem;
+    color: rgba(17, 17, 17, 0.78);
+}
+
+.hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 0;
+    border: 1px solid transparent;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.button:hover::before {
+    width: 100%;
+}
+
+.button--primary {
+    background: #111111;
+    color: #f6f4ef;
+}
+
+.button--ghost {
+    background: transparent;
+    border-color: #111111;
+    color: #111111;
+}
+
+.button:hover,
+.button:focus {
+    transform: translateY(-2px);
+}
+
+.hero__meta {
+    display: flex;
+    gap: clamp(20px, 8vw, 120px);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__meta .meta__value {
+    display: block;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    margin-top: 10px;
+}
+
+/* APUL捷克体系简介（#about）页面文字改为白色 */
+#about .hero__content,
+#about .hero__eyebrow,
+#about .hero h1,
+#about .hero__lead,
+#about .hero__meta,
+#about .hero__meta .meta__label,
+#about .hero__meta .meta__value {
+    color: #ffffff;
+}
+
+/* #about 区域的按钮样式调整 */
+#about .button--ghost {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+#about .button--ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Contact页面按钮样式 */
+#contact .button--primary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+#contact .button--primary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+/* APUL认证课程（#programs）页面文字改为白色 */
+#programs .programs__title,
+#programs .programs__subtitle {
+    color: #ffffff;
+}
+
+#programs .program-card {
+    background: rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+
+#programs .program-card h3,
+#programs .program-card__tag,
+#programs .program-price {
+    color: #ffffff;
+}
+
+#programs .program-card p,
+#programs .program-description,
+#programs .program-features span,
+#programs .detail-label,
+#programs .detail-value,
+#programs .program-offer {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#programs .program-features span::before {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#programs .contact-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#programs .contact-phone {
+    color: #ffffff;
+}
+
+section {
+    padding: clamp(100px, 18vh, 160px) clamp(24px, 8vw, 120px);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Manifesto页面 */
+.manifesto {
+    position: relative;
+    width: 100%;
+    padding: clamp(120px, 18vh, 200px) clamp(24px, 8vw, 120px);
+    color: #ffffff;
+    box-sizing: border-box;
+}
+.manifesto__container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: clamp(48px, 8vw, 96px);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.manifesto__header {
+    max-width: 720px;
+}
+
+.manifesto__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.manifesto__eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+}
+
+.manifesto__header h2 {
+    margin: 24px 0 18px;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.manifesto__header p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.manifesto__stats-row {
+    margin-top: clamp(32px, 5vw, 56px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 48px);
+    align-items: center;
+}
+
+.manifesto__metric {
+    display: grid;
+    gap: 4px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.manifesto__metric span:nth-child(1) {
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.manifesto__metric span:nth-child(2) {
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.manifesto__stats-row span {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+
+
+.manifesto__body {
+    display: grid;
+    grid-template-columns: clamp(280px, 42%, 420px) 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+}
+
+.manifesto__highlight {
+    padding: clamp(28px, 4.8vw, 48px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    display: grid;
+    gap: 16px;
+}
+
+.manifesto__highlight h3 {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+}
+
+.manifesto__highlight p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.manifesto__list {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.manifesto__list li {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    position: relative;
+    padding-left: 20px;
+}
+
+.manifesto__list li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.manifesto__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.manifesto__cta::after {
+    content: "→";
+    transform: translateY(-1px);
+}
+
+.manifesto__cta:hover {
+    opacity: 0.8;
+}
+
+.manifesto__cards {
+    display: grid;
+    gap: clamp(18px, 3.2vw, 32px);
+}
+
+.manifesto-card {
+    position: relative;
+    padding: clamp(24px, 4vw, 36px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    border-radius: 12px;
+}
+
+.manifesto-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 60%);
+    z-index: -1;
+}
+
+.manifesto-card__index {
+    font-size: 0.8rem;
+    letter-spacing: 0.28em;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    display: block;
+}
+
+.manifesto-card h3 {
+    margin: clamp(18px, 3vw, 24px) 0 12px;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.manifesto-card p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.manifesto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 960px) {
+    .manifesto__body {
+        grid-template-columns: 1fr;
+    }
+
+    .manifesto__highlight {
+        position: relative;
+        top: auto;
+    }
+}
+
+
+
+.section-head {
+    max-width: 520px;
+    margin-bottom: clamp(40px, 7vw, 80px);
+}
+
+.section-head h2 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* Programs页面 */
+.programs {
+    position: relative;
+    padding: clamp(100px, 18vh, 160px) clamp(24px, 8vw, 120px);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+}
+
+/* Manifesto与Programs共享的背景 */
+.manifesto > *,
+.programs > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 共享视差背景 - 用于Manifesto和Programs页面 */
+.shared-parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.shared-parallax-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.92) contrast(1.05);
+}
+
+.shared-parallax-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+.shared-parallax-bg.is-visible::after {
+    opacity: 1;
+}
+
+.shared-parallax-bg.is-visible {
+    opacity: 1;
+}
+
+.programs__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--max-width);
+}
+
+.programs__header {
+    max-width: 520px;
+    margin-bottom: clamp(40px, 7vw, 80px);
+}
+
+.programs__title {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-foreground);
+    font-weight: 700;
+}
+
+.programs__subtitle {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.programs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(24px, 4vw, 48px);
+}
+
+.program-card {
+    background: transparent;
+    border: none;
+    padding: clamp(24px, 4vw, 36px);
+    min-height: 240px;
+    position: relative;
+}
+
+.program-card__content {
+    color: var(--color-foreground);
+}
+
+.program-card__header {
+    margin-bottom: 16px;
+}
+
+.program-card__tag {
+    margin: 0 0 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    font-weight: 600;
+    display: block;
+}
+
+.program-price {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin: 12px 0;
+}
+
+.program-card h3 {
+    margin: 0 0 16px;
+    color: var(--color-foreground);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 600;
+}
+
+.program-description {
+    color: rgba(17, 17, 17, 0.78);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+}
+
+.program-features {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.program-features span {
+    display: block;
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: rgba(17, 17, 17, 0.7);
+    position: relative;
+    padding-left: 12px;
+}
+
+.program-features span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: rgba(17, 17, 17, 0.6);
+    border-radius: 50%;
+}
+
+.program-details {
+    margin: 20px 0;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 0;
+    font-size: 0.85rem;
+}
+
+.detail-label {
+    color: rgba(17, 17, 17, 0.7);
+    font-weight: 500;
+}
+
+.detail-value {
+    color: var(--color-foreground);
+    font-weight: 600;
+}
+
+.program-offer {
+    background: transparent;
+    color: rgba(17, 17, 17, 0.7);
+    padding: 16px 0;
+    margin: 16px 0;
+    font-weight: 600;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.program-contact {
+    margin: 20px 0 0;
+}
+
+.contact-label {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(17, 17, 17, 0.7);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.contact-phone {
+    font-size: 1.1rem;
+    color: var(--color-foreground);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+
+
+
+.contact__panel {
+    position: relative;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 16px;
+    border: 1px solid rgba(17, 17, 17, 0.06);
+    padding: clamp(28px, 5vw, 40px);
+    display: grid;
+    gap: 24px;
+    color: var(--color-foreground);
+    box-shadow: 0 20px 60px rgba(17, 17, 17, 0.08);
+}
+.contact__panel h2,
+.contact__panel p {
+    color: var(--color-foreground);
+}
+.contact__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--color-accent);
+    opacity: 0.4;
+}
+.contact__form {
+    display: grid;
+    gap: 18px;
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--color-foreground);
+}
+.contact input,
+.contact select,
+.contact textarea {
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    background: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-foreground);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(17, 17, 17, 0.04);
+}
+
+.contact input::placeholder,
+.contact select::placeholder,
+.contact textarea::placeholder {
+    color: rgba(17, 17, 17, 0.4);
+}
+
+.contact input:focus,
+.contact select:focus,
+.contact textarea:focus {
+    outline: none;
+    border-color: rgba(15, 76, 129, 0.35);
+    box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.08);
+    background: #ffffff;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.contact__meta {
+    display: grid;
+    gap: clamp(24px, 4vw, 40px);
+    font-size: 0.95rem;
+    color: rgba(17, 17, 17, 0.78);
+}
+
+.contact__meta h3 {
+    color: var(--color-foreground);
+    margin-bottom: 8px;
+}
+
+.contact__meta p {
+    color: rgba(17, 17, 17, 0.65);
+}
+
+.footer {
+    padding: 40px clamp(24px, 6vw, 120px) 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+.footer__links a {
+    margin-right: 18px;
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateX(0px);
+    transition: opacity 1s ease, transform 2s ease;
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateX(24px);
+}
+
+
+@media (max-width: 960px) {
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+
+
+
+    .hero__meta {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .hero {
+        margin-top: 0;
+    }
+    
+    .text-marquee {
+        top: 66px;
+        --marquee-height: 80px;        /* 移动端双层高度 */
+        --marquee-track-height: 40px;  /* 移动端单轨道高度 */
+    }
+    
+    .marquee-track span {
+        font-size: 0.7rem;
+        padding: 0 clamp(24px, 3vw, 32px);
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: clamp(120px, 24vh, 200px) 24px 120px;
+    }
+
+    section {
+        padding: clamp(80px, 16vh, 120px) 24px;
+    }
+
+
+    .hero__lead {
+        font-size: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* 对滚动动画也应用减少动画偏好 */
+    .marquee-track,
+    .marquee-track--reverse {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+    
+    /* 对背景呼吸动画也应用减少动画偏好 */
+    .intro-gap,
+    .hero__background,
+    .intro-gap__title {
+        animation: none !important;
+    }
+}
+
+
+/* 自定义一些可调参数 */
+:root {
+    --hover-lift: 6px;          /* 上浮距离 */
+    --hover-scale: 1.02;        /* 略微放大 */
+    --hover-shadow: 0 10px 24px rgba(0,0,0,.08);
+  }
+  
+  /* 只在下拉已展开时才启用 hover 效果，避免未展开就触发 */
+  .nav__item--menu.is-open .nav__dropdown li:hover,
+  .nav__item--menu:hover     .nav__dropdown li:hover {
+    transform: translateY(calc(-1 * var(--hover-lift))) scale(var(--hover-scale));
+    transition: transform .28s ease, filter .28s ease, text-shadow .28s ease;
+    filter: saturate(1.05);
+    will-change: transform, filter;
+  }
+  
+  /* 让整行可点，增加触控区域手感 */
+  .nav__dropdown .nav__link {
+    display: block;
+    padding: 10px 14px;               /* 比原来 6px 稍大一点 */
+    border-radius: 12px;
+    transition: background-color .25s ease, box-shadow .25s ease;
+  }
+  
+  /* 悬停时的背景与阴影 */
+  .nav__item--menu.is-open .nav__dropdown li:hover .nav__link,
+  .nav__item--menu:hover     .nav__dropdown li:hover .nav__link {
+    background: rgba(0,0,0,.04);
+    box-shadow: var(--hover-shadow);
+  }
+  
+  /* 下拉菜单下划线动画已移除 */
+  
+  /* （可选）把你原来把 li 直接拉到 -40px 的动画改小一点，避免"飞走" */
+  .nav__dropdown li:hover {
+    transform: translateY(-6px); /* 原来是 -40px，太猛了 */
+    transition-duration: .28s;   /* 对齐上面的节奏 */
+  }
+
+
+  
+  /* 注册可动画的自定义属性，承载"上下震动"的位移量 */
+@property --bob-offset {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 0px;
+  }
+  
+  /* 震动关键帧（上下往返） */
+  @keyframes nav-bob {
+    0%, 100% { --bob-offset: 0px; }
+    50%      { --bob-offset: -4px; } /* 震动幅度，可调为 -2px ~ -6px */
+  }
+
+  :root{
+    --bob-speed: 8s; /* 越小越快，例如 0.8s、0.6s */
+  }
+  
+  /* 悬浮时：在原有上浮/放大基础上叠加震动动画 */
+  .nav__item--menu.is-open .nav__dropdown li:hover,
+  .nav__item--menu:hover     .nav__dropdown li:hover {
+    /* 将两种位移合并：上浮距离 + 震动偏移 */
+    transform: translateY(calc(-1 * var(--hover-lift) + var(--bob-offset)))
+               scale(var(--hover-scale));
+    animation: nav-bob var(--bob-speed) ease-in-out infinite;
+    transition: transform .28s ease, filter .28s ease, text-shadow .28s ease;
+    will-change: transform, filter;
+  }
+  
+  /* 搭配方案 A 的连带样式（保持不变，可选粘贴以便一处维护） */
+  .nav__dropdown .nav__link {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 12px;
+    transition: background-color .25s ease, box-shadow .25s ease;
+  }
+  
+  .nav__item--menu.is-open .nav__dropdown li:hover .nav__link,
+  .nav__item--menu:hover     .nav__dropdown li:hover .nav__link {
+    background: rgba(0,0,0,.04);
+    box-shadow: var(--hover-shadow);
+  }
+  
+  /* 把你原先 li:hover 的大位移收敛掉，避免与震动叠加过猛 */
+  .nav__dropdown li:hover {
+    transform: translateY(calc(-1 * var(--hover-lift) + var(--bob-offset)));
+    transition-duration: .28s;
+  }
+  
+  /* 减少动画偏好：保持可用但不晃动 */
+  @media (prefers-reduced-motion: reduce) {
+    .nav__item--menu.is-open .nav__dropdown li:hover,
+    .nav__item--menu:hover     .nav__dropdown li:hover {
+      animation: none !important;
+      transform: translateY(calc(-1 * var(--hover-lift))) scale(var(--hover-scale));
+    }
+
+
+}
+
+.contact-qr {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    justify-self: center;
+    margin: 0 0 0 -20px;
+}
+.contact-qr__image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(17, 17, 17, 0.12);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    background: #ffffff;
+}
+.contact-qr__caption {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.6);
+}
+.contact__meta > div {
+    position: static;
+    padding-top: 0;
+}
+.contact__meta > div::before {
+    content: none;
+}
+.contact-map {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(17, 17, 17, 0.12);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    background: #ffffff;
+    margin-top: 12px;
+}
+
+
+.programs__notice {
+    margin: clamp(48px, 8vw, 72px) auto 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    text-transform: none;
+    max-width: 720px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+.programs__notice p {
+    margin: 8px 0;
+}
+.programs__notice p:first-child {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.programs__subtitle--aligned,
+.programs__notice {
+    margin-left: 0;
+}
+
+.program-card__section {
+    margin: clamp(16px, 3vw, 28px) 0;
+}
+.program-card__section h4 {
+    margin: 0 0 12px;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.88);
+}
+.program-card__section ol {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+.program-card__section ol li::marker {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.program-timetable {
+    margin: clamp(8px, 1.8vw, 14px) 0;
+    padding: clamp(10px, 1.8vw, 14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    display: grid;
+    gap: 4px;
+    width: fit-content;
+    justify-self: end;
+}
+.timetable-value {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.88);
+}
+

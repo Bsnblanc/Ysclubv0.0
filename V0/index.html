@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <!--
+      设置viewport以确保在移动端正确缩放页面。通过设置
+      user‑scalable=no 关闭双指缩放，viewport‑fit=cover 允许全屏显示
+      （适用于包含凹口的设备）。
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>雪域巅峰滑雪俱乐部 | 城市起点 · 巅峰目的地</title>
+    <meta name="description" content="雪域巅峰滑雪俱乐部，以国际视野重构滑雪生活方式，连接城市训练与全球雪场体验。">
+
+    <!-- 预连接Google字体以提高首屏渲染速度 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- 主样式表 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 移动端适配补丁：在原样式之后加载，用于覆盖部分样式，使页面在手机浏览器上更易读、无横向溢出 -->
+    <link rel="stylesheet" href="styles_mobile.css">
+</head>
+<body class="page-transition">
+    <!-- 视差背景视频。设置 aria-hidden 减少读屏器干扰 -->
+    <div class="shared-parallax-bg" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="mountain4k_1.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- 头部导航栏 -->
+    <header class="masthead" id="top">
+        <a class="brand" href="#top">
+            <span class="brand__title">YS CLUB</span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+            <ul class="nav__list" id="primary-nav">
+                <li class="nav__item nav__item--menu">
+                    <a href="#primary-nav" class="nav__link nav__link--menu" aria-expanded="false">菜单</a>
+                    <ul class="nav__dropdown">
+                        <li><a href="#home" class="nav__link">首页</a></li>
+                        <li><a href="#about" class="nav__link">APUL体系</a></li>
+                        <li><a href="#manifesto" class="nav__link">选择理由</a></li>
+                        <li><a href="#programs" class="nav__link">认证课程</a></li>
+                        <li><a href="#contact" class="nav__link">联系我们</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 菜单下拉时的背景模糊遮罩 -->
+    <div class="menu-backdrop" aria-hidden="true"></div>
+
+    <!-- 滚动文字条 -->
+    <div class="text-marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>PEAK SNOW COLLECTIVE</span>
+            <span>滑雪俱乐部</span>
+            <span>CLUB INTERNACIONAL</span>
+            <span>雪域巅峰</span>
+            <span>クラブインターナショナル</span>
+            <span>스노우 컬렉티브</span>
+            <span>Collectif De Neige</span>
+            <span>MOUNTAIN ADVENTURES</span>
+            <!-- 重复一遍形成循环效果 -->
+            <span>PEAK SNOW COLLECTIVE</span>
+            <span>滑雪俱乐部</span>
+            <span>CLUB INTERNACIONAL</span>
+            <span>雪域巅峰</span>
+            <span>クラブインターナショナル</span>
+            <span>스노우 컬렉티브</span>
+            <span>Collectif De Neige</span>
+            <span>MOUNTAIN ADVENTURES</span>
+        </div>
+        <div class="marquee-track marquee-track--reverse">
+            <span>SKI PARADISE</span>
+            <span>滑雪天堂</span>
+            <span>SNOW EXPERIENCE</span>
+            <span>雪山体验</span>
+            <span>ウィンタースポーツ</span>
+            <span>겨울 스포츠</span>
+            <span>Sports D'hiver</span>
+            <span>ALPINE ADVENTURES</span>
+            <!-- 重复一遍形成循环效果 -->
+            <span>SKI PARADISE</span>
+            <span>滑雪天堂</span>
+            <span>SNOW EXPERIENCE</span>
+            <span>雪山体验</span>
+            <span>ウィンタースポーツ</span>
+            <span>겨울 스포츠</span>
+            <span>Sports D'hiver</span>
+            <span>ALPINE ADVENTURES</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- Intro 区域，用于展示品牌名称和背景视频 -->
+        <section class="intro-gap">
+            <div class="intro-gap__video" aria-hidden="true">
+                <video class="intro-gap__video-media" autoplay muted loop playsinline preload="auto">
+                    <source src="mountain1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <h1 class="intro-gap__title" data-reveal data-delay="0.3">
+                <span class="title-line">YS</span>
+                <span class="title-line">CLUB</span>
+            </h1>
+        </section>
+
+        <!-- 首页内容 -->
+        <section class="hero" id="home">
+            <!-- 水平滚动图片区域 -->
+            <div class="image-scroll-container">
+                <div class="image-scroll-track">
+                    <!-- 每个图片都包含说明文字，以便在移动端滚动到时显示 -->
+                    <div class="scroll-image-item">
+                        <img src="image1.jpg" alt="专业滑雪训练">
+                        <div class="image-caption">
+                            <h4>专业滑雪训练</h4>
+                            <p>国际标准认证课程</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="image4.jpg" alt="APUL合作认证">
+                        <div class="image-caption">
+                            <h4>APUL合作认证</h4>
+                            <p>捷克专业滑雪教师协会</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="image3.jpg" alt="ISIA国际标准">
+                        <div class="image-caption">
+                            <h4>ISIA国际标准</h4>
+                            <p>Level D & Level C 认证</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="image2.jpg" alt="专业教学能力">
+                        <div class="image-caption">
+                            <h4>专业教学能力</h4>
+                            <p>从会滑到会教的蜕变</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="ski-peak.jpg" alt="雪场实践">
+                        <div class="image-caption">
+                            <h4>雪场实践</h4>
+                            <p>真实雪场环境训练</p>
+                        </div>
+                    </div>
+                    <!-- 复制一轮用于无缝循环 -->
+                    <div class="scroll-image-item">
+                        <img src="image1.jpg" alt="专业滑雪训练">
+                        <div class="image-caption">
+                            <h4>专业滑雪训练</h4>
+                            <p>国际标准认证课程</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="image4.jpg" alt="APUL合作认证">
+                        <div class="image-caption">
+                            <h4>APUL合作认证</h4>
+                            <p>捷克专业滑雪教师协会</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="image3.jpg" alt="ISIA国际标准">
+                        <div class="image-caption">
+                            <h4>ISIA国际标准</h4>
+                            <p>Level D & Level C 认证</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="image2.jpg" alt="专业教学能力">
+                        <div class="image-caption">
+                            <h4>专业教学能力</h4>
+                            <p>从会滑到会教的蜕变</p>
+                        </div>
+                    </div>
+                    <div class="scroll-image-item">
+                        <img src="ski-peak.jpg" alt="雪场实践">
+                        <div class="image-caption">
+                            <h4>雪场实践</h4>
+                            <p>真实雪场环境训练</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 首页文字内容 -->
+            <div class="home-content">
+                <p class="home-num" data-reveal data-delay="0.15">01</p>
+                <p class="home-text" data-reveal data-delay="0.3">(who are we)</p>
+                <p class="home-intro" data-reveal data-delay="0.45">YS CLUB 是面向雪龄爱好者与准教练的专业滑雪培训与认证中心。<br><br>我们与捷克专业滑雪教师及滑雪学校协会 APUL 建立合作，<br><br>开设符合 ISIA 国际标准的双板一级（APUL Level D）与二级（APUL Level C）认证课程，<br><br>帮助学员从"会滑"走向"会教、会分析、会示范"。</p>
+            </div>
+        </section>
+
+        <!-- APUL 介绍部分 -->
+        <section class="hero" id="about">
+            <img src="apul-logo.png" alt="APUL官方认证标志" class="apul-logo" data-reveal data-delay="0.1">
+            <div class="hero__content" data-reveal>
+                <p class="hero__eyebrow">国际认证 · 专业权威</p>
+                <h1>APUL捷克体系简介</h1>
+                <p class="hero__lead">捷克共和国专业滑雪教师和滑雪学校协会APUL成立于1992年，1994年正式加入ISIA国际组织。我们的教育体系符合ISIA国际标准，与各国伙伴协会密切合作，为全球滑雪教学提供权威认证。</p>
+                <div class="hero__cta">
+                    <a class="button button--primary" href="#contact">预约体验</a>
+                    <a class="button button--ghost" href="#manifesto">探索理念</a>
+                </div>
+            </div>
+            <div class="hero__meta" data-reveal data-delay="0.12">
+                <div>
+                    <span class="meta__label">成立时间</span>
+                    <span class="meta__value">1992</span>
+                </div>
+                <div>
+                    <span class="meta__label">加入ISIA</span>
+                    <span class="meta__value">1994</span>
+                </div>
+                <div>
+                    <span class="meta__label">国际标准</span>
+                    <span class="meta__value">ISIA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 为什么选择 APUL -->
+        <section class="manifesto" id="manifesto">
+            <div class="manifesto__container">
+                <header class="manifesto__header">
+                    <span class="manifesto__eyebrow" data-reveal>WHY APUL</span>
+                    <h2 data-reveal data-delay="0.08">为什么选择 APUL？</h2>
+                    <p data-reveal data-delay="0.18">APUL 认证依托捷克专业滑雪教师协会 30 余年的完整培养体系，从基础能力到教学方法都以可重复的标准执行，让"会滑"真正走向 "会教"、 "会示范"、 "会诊断"。</p>
+                    <div class="manifesto__stats-row" data-reveal data-delay="0.28">
+                        <span>体系沉淀</span>
+                        <span>导师学员配比</span>
+                        <span>实战训练</span>
+                    </div>
+                </header>
+                <div class="manifesto__body">
+                    <div class="manifesto__highlight" data-reveal data-delay="0.38">
+                        <h3>APUL 的承诺</h3>
+                        <p>我们以真实雪场业务为底稿，搭建"动作诊断 — 教学方法 — 示范执行"的穿透式教学链路，帮助教练在短时间内形成可复制的教学体系。</p>
+                        <ul class="manifesto__list">
+                            <li>国际导师团队双语授课，保证指令一致性</li>
+                            <li>场景化教学演练，覆盖室内雪场与户外雪场</li>
+                            <li>结业输出个人成长轨迹与复训建议</li>
+                        </ul>
+                        <a class="manifesto__cta" href="#programs">了解 APUL 认证模型</a>
+                    </div>
+                    <div class="manifesto__cards">
+                        <article class="manifesto-card" data-reveal data-delay="0.48">
+                            <span class="manifesto-card__index">01</span>
+                            <h3>实战视频诊断</h3>
+                            <p>从雪场真实案例入手，拆解动作轨迹、节奏、动态平衡等关键指标，建立教练的观察框架与语言体系。</p>
+                        </article>
+                        <article class="manifesto-card" data-reveal data-delay="0.58">
+                            <span class="manifesto-card__index">02</span>
+                            <h3>系统教学策略</h3>
+                            <p>以 APUL 四阶段教学路径 (Demo-Explain-Observe-Correct) 为骨架，结合国内学员特点设计差异化教案。</p>
+                        </article>
+                        <article class="manifesto-card" data-reveal data-delay="0.68">
+                            <span class="manifesto-card__index">03</span>
+                            <h3>职业发展通道</h3>
+                            <p>完成认证后可对接海外雪场实习、国内合作教学岗位，并获取后续 Level C / Level B 进阶路线建议。</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 课程介绍 -->
+        <section class="programs" id="programs">
+            <div class="programs__content">
+                <header class="programs__header">
+                    <h2 class="programs__title" data-reveal>APUL认证课程</h2>
+                    <p class="programs__subtitle programs__subtitle--aligned" data-reveal data-delay="0.1">符合ISIA国际标准的捷克体系双板认证，从Level D到Level C的完整教练培养体系</p>
+                </header>
+                <div class="programs__grid" data-reveal data-delay="0.2">
+                    <!-- Level D 课程卡片 -->
+                    <article class="program-card" data-reveal data-delay="0.35">
+                        <div class="program-card__content">
+                            <div class="program-card__header">
+                                <span class="program-card__tag">APUL LEVEL D</span>
+                                <span class="program-price">¥9,499</span>
+                            </div>
+                            <h3>捷克体系双板一级认证</h3>
+                            <p class="program-description">五天课程（包含一天考试），掌握基础教学技能和滑行技术</p>
+                            <div class="program-card__section">
+                                <h4>教学考试要求</h4>
+                                <ol>
+                                    <li>按照捷克体系教学流程完成教学考试</li>
+                                    <li>运用捷克体系或更高效的方法分析滑行完成对学员教学</li>
+                                    <li>合理运用动作练习或教学方法帮助学员进步或调整滑行动作</li>
+                                    <li>教学时能够做出清晰明确的示范</li>
+                                </ol>
+                            </div>
+                            <div class="program-card__section">
+                                <h4>滑行考试内容</h4>
+                                <ol>
+                                    <li>犁式倒滑连续转弯</li>
+                                    <li>犁式转弯改变弯形大小</li>
+                                    <li>平行横滑降</li>
+                                    <li>平行转弯</li>
+                                    <li>基础转弯</li>
+                                    <li>鹤乌弯</li>
+                                    <li>小弯</li>
+                                    <li>蹬冰滑行</li>
+                                    <li>半型式转弯控制速度</li>
+                                    <li>平行转弯</li>
+                                    <li>点杖</li>
+                                </ol>
+                            </div>
+                            <div class="program-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">时间</span>
+                                    <span class="detail-value">10月9日-13日</span>
+                                </div>
+                                <div class="program-timetable">
+                                    <span class="timetable-value">10:30-12:30</span>
+                                    <span class="timetable-value">14:30-17:30</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">地点</span>
+                                    <span class="detail-value">深圳前海冰雪世界</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">限额</span>
+                                    <span class="detail-value">12人</span>
+                                </div>
+                            </div>
+                            <div class="program-offer">
+                                限时优惠：10月5日前预报名，定金500元抵1000元
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Level C 课程卡片 -->
+                    <article class="program-card" data-reveal data-delay="0.55">
+                        <div class="program-card__content">
+                            <div class="program-card__header">
+                                <span class="program-card__tag">APUL LEVEL C</span>
+                                <span class="program-price">¥14,499</span>
+                            </div>
+                            <h3>捷克体系双板二级认证</h3>
+                            <p class="program-description">六天课程（包含一天考试），进阶教学技能和高级滑行技术</p>
+                            <div class="program-card__section">
+                                <h4>教学考试要求</h4>
+                                <ol>
+                                    <li>按照捷克体系教学流程完成教学考试</li>
+                                    <li>运用捷克体系或更高效的方法分析滑行完成对学员教学</li>
+                                    <li>合理运用动作练习或教学方法使学员进步或调整滑行动作</li>
+                                    <li>教学时能够做出清晰明确的示范</li>
+                                </ol>
+                            </div>
+                            <div class="program-card__section">
+                                <h4>滑行考试内容</h4>
+                                <ol>
+                                    <li>平行倒滑连续转弯</li>
+                                    <li>平行转弯改变弯形大小</li>
+                                    <li>轴转横滑降</li>
+                                    <li>花环弯</li>
+                                    <li>平行小弯</li>
+                                    <li>标枪弯</li>
+                                    <li>小弯</li>
+                                    <li>平行转弯</li>
+                                </ol>
+                            </div>
+                            <div class="program-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">时间</span>
+                                    <span class="detail-value">10月15日-20日</span>
+                                </div>
+                                <div class="program-timetable">
+                                    <span class="timetable-value">10:30-12:30</span>
+                                    <span class="timetable-value">14:30-17:30</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">地点</span>
+                                    <span class="detail-value">深圳前海冰雪世界</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">限额</span>
+                                    <span class="detail-value">10人</span>
+                                </div>
+                            </div>
+                            <div class="program-offer">
+                                限时优惠：10月10日前预报名，定金500元抵1000元
+                            </div>
+                        </div>
+                    </article>
+                    <!-- 职业发展卡片 -->
+                    <article class="program-card program-card--career" data-reveal data-delay="0.75">
+                        <div class="program-card__content">
+                            <div class="program-card__header">
+                                <span class="program-card__tag">职业发展</span>
+                                <span class="program-price">咨询定制</span>
+                            </div>
+                            <h3>国际教练通道</h3>
+                            <p class="program-description">完成APUL认证后的职业发展路径，包含海外实习和签证支持</p>
+                            <div class="program-features">
+                                <span>海外雪场工作机会</span>
+                                <span>签证申请直通服务</span>
+                                <span>国际教练网络</span>
+                                <span>持续进修支持</span>
+                            </div>
+                            <div class="program-contact">
+                                <span class="contact-label">专业咨询</span>
+                                <span class="contact-phone">193 9291 1363</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="programs__notice" data-reveal data-delay="0.05">
+                    <p>1. 费用已包括APUL LEVEL D课程培训费、翻译费、认证和考试费（费用不包括交通、住宿、雪票、雪具租赁、餐饮费用）；</p>
+                    <p>2. 定金不支持退款，可自行转让；</p>
+                    <p>3. 因考级课程需提前上报捷克委员会，不可退款，可自行转让；开课前7天，不可转让；</p>
+                    <p>4. 如因不可抗力，课程日期调整，会提前通知，可全额退款。</p>
+                    <p>5. 如因个人因素无法参与课程，需遵守第三条规定。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section class="contact" id="contact">
+            <div class="contact__panel" data-reveal>
+                <h2>联系我们</h2>
+                <p>想了解更多APUL认证课程？下一位国际教练，可能就是你。立即咨询，开启专业滑雪教练之路。</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📞 咨询热线</h3>
+                        <p><a href="tel:19392911363">193 9291 1363</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🏔️ 培训地点</h3>
+                        <p>深圳@前海冰雪世界</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>⏰ 课程时间</h3>
+                        <p>10:30-12:30, 14:30-17:30</p>
+                    </div>
+                </div>
+                <div class="contact-qr" data-reveal data-delay="0.05">
+                    <img src="code.png" alt="俱乐部二维码" class="contact-qr__image">
+                    <span class="contact-qr__caption">扫码添加俱乐部顾问</span>
+                </div>
+                <form class="contact__form">
+                    <label class="form-field">
+                        <span>姓名</span>
+                        <input type="text" name="name" placeholder="李雷" required>
+                    </label>
+                    <label class="form-field">
+                        <span>电话</span>
+                        <input type="tel" name="phone" placeholder="138-0000-0000" required>
+                    </label>
+                    <label class="form-field">
+                        <span>滑雪水平</span>
+                        <select name="level">
+                            <option value="beginner">初学</option>
+                            <option value="intermediate">中级</option>
+                            <option value="advanced">高级 / 竞赛</option>
+                        </select>
+                    </label>
+                    <label class="form-field">
+                        <span>想了解的内容</span>
+                        <textarea name="message" rows="3" placeholder="例如：进阶课程、亲子活动、专属教练"></textarea>
+                    </label>
+                    <button class="button button--primary" type="submit">发送预约</button>
+                </form>
+            </div>
+            <aside class="contact__meta" data-reveal data-delay="0.1">
+                <div>
+                    <h3>雪季基地</h3>
+                    <p>吉林 · 松花湖国际度假区<br>新疆 · 阿勒泰将军山<br>黑龙江 · 亚布力度假区</p>
+                </div>
+                <div>
+                    <h3>城市俱乐部中心</h3>
+                    <p>深圳前海·华发冰雪世界<br>周二至周日 · 10:00-20:00</p>
+                    <img src="map.png" alt="深圳前海·华发冰雪世界地图" class="contact-map">
+                </div>
+                <div>
+                    <h3>合作与媒体</h3>
+                    <p>media@peaksnowclub.com<br>热线：400-8820-119</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>© 2024 Peak Snow Collective. All rights reserved.</p>
+        <div class="footer__links">
+            <a href="#">隐私政策</a>
+            <a href="#">安全须知</a>
+            <a href="#">加入我们</a>
+        </div>
+    </footer>
+
+    <!-- 脚本文件，使用 defer 在文档加载后执行 -->
+    <script src="script.js" defer></script>
+</body>
+</html>
